@@ -21,15 +21,15 @@ public class SizeServiceImpl implements ISizeService {
     private void init() {
         List<SizeTable> sizeTableList = new ArrayList<>();
         sizeTableList.add(new SizeTable(Gender.MALE, 155,140,55,40, Size.S));
-        sizeTableList.add(new SizeTable(Gender.MALE, 170,155,70,55, Size.S));
-        sizeTableList.add(new SizeTable(Gender.MALE, 185,170,85,70, Size.M));
-        sizeTableList.add(new SizeTable(Gender.MALE, 200,185,100,85,Size.L));
-        sizeTableList.add(new SizeTable(Gender.MALE, 210,200,120,100,Size.XL));
-        sizeTableList.add(new SizeTable(Gender.FEMALE, 155,140,55,40, Size.XS));
-        sizeTableList.add(new SizeTable(Gender.FEMALE, 170,155,70,55, Size.S));
-        sizeTableList.add(new SizeTable(Gender.FEMALE, 185,170,85,70, Size.M));
-        sizeTableList.add(new SizeTable(Gender.FEMALE, 200,185,100,85,Size.L));
-        sizeTableList.add(new SizeTable(Gender.FEMALE, 210,200,120,100,Size.XL));
+        sizeTableList.add(new SizeTable(Gender.MALE, 170,156,70,56, Size.S));
+        sizeTableList.add(new SizeTable(Gender.MALE, 185,171,85,71, Size.M));
+        sizeTableList.add(new SizeTable(Gender.MALE, 200,186,100,86,Size.L));
+        sizeTableList.add(new SizeTable(Gender.MALE, 210,201,120,101,Size.XL));
+        sizeTableList.add(new SizeTable(Gender.FEMALE, 155,140,55,41, Size.XS));
+        sizeTableList.add(new SizeTable(Gender.FEMALE, 170,156,70,56, Size.S));
+        sizeTableList.add(new SizeTable(Gender.FEMALE, 185,171,85,71, Size.M));
+        sizeTableList.add(new SizeTable(Gender.FEMALE, 200,186,100,86,Size.L));
+        sizeTableList.add(new SizeTable(Gender.FEMALE, 210,201,120,101,Size.XL));
         sizeTableRepository.saveAll(sizeTableList);
     }
 

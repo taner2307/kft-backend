@@ -2,17 +2,11 @@ package com.example.kaft.service;
 
 import com.example.kaft.enums.Gender;
 import com.example.kaft.enums.Size;
-import com.example.kaft.model.SizeTable;
 import com.example.kaft.model.ProductSize;
 import com.example.kaft.repository.SizeTableRepository;
 import lombok.AllArgsConstructor;
-import org.apache.tomcat.util.http.parser.Ranges;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
-import org.springframework.data.domain.Range;
 import org.springframework.stereotype.Service;
 
-import java.awt.font.NumericShaper;
-import java.util.List;
 import java.util.TreeMap;
 
 @Service
@@ -23,15 +17,10 @@ public class ProductSizeServiceServiceImpl implements IProductSizeService {
 
     @Override
     public ProductSize calculateProductSize(ProductSize productSize) {
-        List<SizeTable> sizeTableList = sizeTableRepository.findAll();
-        for (SizeTable st : sizeTableList) {
-            if (productSize.getGender() == st.getGender() &&
-                    (productSize.getWeight() >= st.getBodyWeightMin() &&
-                            productSize.getWeight() <= st.getBodyWeightMax()) &&
-                    (productSize.getHeight() >= st.getBodyHeightMin() &&
-                            productSize.getHeight() <= st.getBodyHeightMax())) {
-                productSize.setSizeSuggestion(st.getSize());
-            }
+        try {
+            productSize.setSizeSuggestion(sizeTableRepository.getValue(productSize.getHeight(), productSize.getWeight(), productSize.getGender()).getSize());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         if (productSize.getSizeSuggestion() == null) {
             productSize.setSizeSuggestion(calculateBMI(productSize.getGender(),
